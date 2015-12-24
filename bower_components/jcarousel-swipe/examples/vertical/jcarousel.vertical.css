@@ -1,12 +1,8 @@
-.wrapper {
-    max-width: none;
-}
-
 .jcarousel-wrapper {
     margin: 20px auto;
     position: relative;
     border: 10px solid #fff;
-    width: 1600px;
+    width: 600px;
     height: 400px;
     -webkit-border-radius: 5px;
        -moz-border-radius: 5px;
@@ -38,12 +34,26 @@
     overflow: hidden;
 }
 
+.jcarousel img {
+    display: block;
+}
+
+.jcarousel.jcarousel-vertical {
+    width: 600px;
+    height: 400px;
+}
+
 .jcarousel ul {
     width: 20000em;
     position: relative;
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+.jcarousel.jcarousel-vertical ul {
+    width: 100%;
+    height: 20000em;
 }
 
 .jcarousel li {

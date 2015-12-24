@@ -1,9 +1,11 @@
 (function($) {
     $(function() {
         $('.jcarousel')
-            .jcarousel()
-            .jcarouselSwipe()
-            .jcarouselLazyLoading();
+            .jcarousel({
+                vertical: true,
+                wrap: 'circular'
+            })
+            .jcarouselSwipe();
 
         $('.jcarousel-control-prev')
             .on('jcarouselcontrol:active', function() {

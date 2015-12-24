@@ -1,10 +1,17 @@
 (function($) {
     $(function() {
+        /*
+        Carousel initialization
+        */
         $('.jcarousel')
-            .jcarousel()
-            .jcarouselSwipe()
-            .jcarouselLazyLoading();
+            .jcarousel({
+                // Options go here
+            })
+            .jcarouselSwipe(); // swipe support
 
+        /*
+         Prev control initialization
+         */
         $('.jcarousel-control-prev')
             .on('jcarouselcontrol:active', function() {
                 $(this).removeClass('inactive');
@@ -13,9 +20,13 @@
                 $(this).addClass('inactive');
             })
             .jcarouselControl({
+                // Options go here
                 target: '-=1'
             });
 
+        /*
+         Next control initialization
+         */
         $('.jcarousel-control-next')
             .on('jcarouselcontrol:active', function() {
                 $(this).removeClass('inactive');
@@ -24,9 +35,13 @@
                 $(this).addClass('inactive');
             })
             .jcarouselControl({
+                // Options go here
                 target: '+=1'
             });
 
+        /*
+         Pagination initialization
+         */
         $('.jcarousel-pagination')
             .on('jcarouselpagination:active', 'a', function() {
                 $(this).addClass('active');
@@ -34,6 +49,8 @@
             .on('jcarouselpagination:inactive', 'a', function() {
                 $(this).removeClass('active');
             })
-            .jcarouselPagination();
+            .jcarouselPagination({
+                // Options go here
+            });
     });
 })(jQuery);

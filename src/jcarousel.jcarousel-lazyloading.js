@@ -3,57 +3,99 @@
 (function($) {
     'use strict';
 
-    $.jCarousel.isImageLoaded = function(img) {
-        if (!img.complete) {
-            return false;
+    $.jCarousel.isImagesLoaded = function($scope) {
+        var $images = $scope.find('img');
+        var count = $images.length;
+        var loadedImages = 0;
+
+        $.each($images, function() {
+            if (checkImage(this)) {
+                loadedImages++;
+            }
+        });
+
+        function checkImage(img) {
+            if (!img.complete) {
+                return false;
+            }
+
+            if (typeof img.naturalWidth !== "undefined" && img.naturalWidth === 0) {
+                return false;
+            }
+
+            return true;
         }
 
-        if (typeof img.naturalWidth !== "undefined" && img.naturalWidth === 0) {
-            return false;
-        }
-
-        return true;
+        return loadedImages === count;
     };
 
     $.jCarousel.plugin('jcarouselLazyLoading', {
         _options: {
             waitFunction: function($slides, callback) {
-                //var img = $slide.find('img')[0];
+                var i = 0;
 
-                //if ($.jCarousel.isImageLoaded(img)) {
-                    console.clear();
-                    $slides.find('img').each(function() {
-                        console.log($(this).attr('src'));
-                    });
-                    callback();
-                //} else {
+                $slides.find('img[data-src]').each(function() {
+                    var $img = $(this);
+                    var src = $img.attr('data-src');
+                    $img.attr('src', src).removeAttr('data-src');
+                });
+                wait();
 
-                //}
+                function wait() {
+                    i++;
+                    if ($.jCarousel.isImagesLoaded($slides)) {
+                        callback();
+                    } else if (i <= 100) { // wait maximum 10 seconds
+                        setTimeout(wait, 100);
+                    } else {
+                        callback();
+                    }
+                }
             }
         },
+        _scrollPrevented: false,
+        _position: 0,
         _init: function() {
             var self = this;
             this._instance = this.carousel().data('jcarousel');
+
             this.carousel()
                 .on('jcarousel:reloadend', function() {
                     self._reload();
                 })
                 .on('jcarousel:scroll', function(event, carousel, target, animate) {
-                    if (!self._scrolling) {
+                    var isPositionChanged = self._position !== self._instance.list().position()[self._instance.lt];
+
+                    if (!self._scrollPrevented && !isPositionChanged) {
                         var $nextSlides = self._getNextVisibleSlides(target);
+                        var callback = function() {};
+                        self._scrollPrevented = true;
+
+                        if ($.isFunction(animate)) { // if scroll was called like .scroll(target, callback)
+                            callback = animate;
+                            animate  = true;
+                        }
 
                         self._options.waitFunction($nextSlides, function() {
-                            self._scrolling = true;
                             self._instance.scroll(target, animate, function() {
-                                self._scrolling = false;
+                                callback();
+                                self._scrollPrevented = false;
+                                self._position = self._instance.list().position()[self._instance.lt];
                             });
                         });
                         event.preventDefault();
                     }
+                })
+                .on('jcarousel:scrollend', function() {
+                    var isPositionChanged = self._position !== self._instance.list().position()[self._instance.lt];
+
+                    if (isPositionChanged) {
+                        self._options.waitFunction(self._instance.visible(), function() {});
+                    }
                 });
         },
         _create: function() {
-            this._instance = this.carousel().data('jcarousel');
+            this._reload();
         },
         _getNextVisibleSlides: function(target) {
             var wh = this._instance.clipping();
@@ -102,15 +144,11 @@
             }
         },
         _destroy: function() {
-            
+
         },
         _reload: function() {
-            
+            this._options.waitFunction(this._instance.visible(), function(){});
+            this._position = this._instance.list().position()[this._instance.lt];
         }
     });
-
-    // идеи:
-    // - определять свайп можно по изменению left
-    // - если свайп то не отменять скролл, и уже после прокрутки подгружать изображения
-    // - если обычное переключение, то можно определить заранее какие слайды будут visible и подгрузить их перед прокруткой
 }(jQuery));

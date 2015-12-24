@@ -2,8 +2,7 @@
     $(function() {
         $('.jcarousel')
             .jcarousel()
-            .jcarouselSwipe()
-            .jcarouselLazyLoading();
+            .jcarouselSwipe();
 
         $('.jcarousel-control-prev')
             .on('jcarouselcontrol:active', function() {
