@@ -36,6 +36,18 @@ gulp.task('jcarouselLazyLoading:build', function () {
 		}))
 		.pipe(gulp.dest('dist/'))
 		.pipe($.browserSync.reload({stream: true}));
+
+	gulp.src('src/*.css')
+		.pipe($.plumber({
+			errorHandler: $.notify.onError(notifyConfig)
+		}))
+		.pipe(gulp.dest('dist/'))
+		.pipe($.uglifycss())
+		.pipe($.rename({
+			extname: '.min.css'
+		}))
+		.pipe(gulp.dest('dist/'))
+		.pipe($.browserSync.reload({stream: true}));
 });
 
 gulp.task('build', [

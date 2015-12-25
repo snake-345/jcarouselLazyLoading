@@ -32,12 +32,17 @@
     $.jCarousel.plugin('jcarouselLazyLoading', {
         _options: {
             preventScroll: true,
-            waitFunction: function($slides, callback) {
+            // isScrollPrevented: true если переключение слайда было отменено
+            // можно использовать для убирания анимации, или для того чтобы показывать какой либо прелоадер
+            waitFunction: function($slides, callback, isScrollPrevented) {
                 var i = 0;
+                var $lazyImages = $slides.find('img[data-src]');
 
-                $slides.find('img[data-src]').each(function() {
+                $lazyImages.toggleClass('non-transition', !!isScrollPrevented);
+                $lazyImages.each(function() {
                     var $img = $(this);
                     var src = $img.attr('data-src');
+                    $img.addClass('loading');
                     $img.attr('src', src).removeAttr('data-src');
                 });
                 wait();
@@ -46,10 +51,12 @@
                     i++;
                     if ($.jCarousel.isImagesLoaded($slides)) {
                         callback();
+                        $lazyImages.removeClass('loading');
                     } else if (i <= 100) { // wait maximum 10 seconds
                         setTimeout(wait, 100);
                     } else {
                         callback();
+                        $lazyImages.removeClass('loading');
                     }
                 }
             }
@@ -83,7 +90,7 @@
                                 self._scrollPrevented = false;
                                 self._position = self._instance.list().position()[self._instance.lt];
                             });
-                        });
+                        }, true);
                         event.preventDefault();
                     }
                 })

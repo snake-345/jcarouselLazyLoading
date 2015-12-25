@@ -13,7 +13,7 @@
         <script type="text/javascript" src="../../bower_components/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="../../bower_components/jcarousel/dist/jquery.jcarousel.js"></script>
         <script type="text/javascript" src="../../bower_components/jcarousel-swipe/dist/jquery.jcarousel-swipe.js"></script>
-        <script type="text/javascript" src="../../dist/jcarousel.jcarousel-lazyloading.js"></script>
+        <script type="text/javascript" src="../../dist/jquery.jcarousel-lazyloading.js"></script>
 
         <script type="text/javascript" src="jcarousel.basic.js"></script>
 
@@ -23,17 +23,17 @@
         <div class="wrapper">
             <h1>Basic carousel</h1>
 
-            <p>This example shows how to setup a basic carousel with prev/next controls and pagination.</p>
+            <p>This example shows how to setup a basic carousel with prev/next controls, pagination, swipe support and <strong>lazy loading.</strong></p>
 
             <div class="jcarousel-wrapper">
                 <div class="jcarousel">
                     <ul>
-                        <li><img src="http://fakeimg.pl/600x400/?text=1" width="600" height="400" alt=""></li>
-                        <li><img src="http://fakeimg.pl/600x400/?text=2" width="600" height="400" alt=""></li>
-                        <li><img src="http://fakeimg.pl/600x400/?text=3" width="600" height="400" alt=""></li>
-                        <li><img data-src="http://fakeimg.pl/600x400/?text=4" width="600" height="400" alt=""></li>
-                        <li><img data-src="http://fakeimg.pl/600x400/?text=5" width="600" height="400" alt=""></li>
-                        <li><img data-src="http://fakeimg.pl/600x400/?text=6" width="600" height="400" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/600x400/ccc/?text=1" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/600x400/bbb/?text=2" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/600x400/aaa/?text=3" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/600x400/999/?text=4" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/600x400/888/?text=5" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/600x400/777/?text=6" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
                     </ul>
                 </div>
 
@@ -43,9 +43,9 @@
 
                 <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
                 <a href="#" class="jcarousel-control-next">&rsaquo;</a>
-                
+
                 <p class="jcarousel-pagination">
-                    
+
                 </p>
             </div>
         </div>

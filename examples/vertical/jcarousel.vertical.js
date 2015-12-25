@@ -5,7 +5,8 @@
                 vertical: true,
                 wrap: 'circular'
             })
-            .jcarouselSwipe();
+            .jcarouselSwipe()
+            .jcarouselLazyLoading();
 
         $('.jcarousel-control-prev')
             .on('jcarouselcontrol:active', function() {
