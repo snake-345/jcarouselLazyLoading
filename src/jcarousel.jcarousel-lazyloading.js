@@ -31,6 +31,7 @@
 
     $.jCarousel.plugin('jcarouselLazyLoading', {
         _options: {
+            preventScroll: true,
             waitFunction: function($slides, callback) {
                 var i = 0;
 
@@ -59,14 +60,14 @@
             var self = this;
             this._instance = this.carousel().data('jcarousel');
 
-            this.carousel()
-                .on('jcarousel:reloadend', function() {
+            this._element
+                .on('jcarousel:reloadend.jcarouselLazyLoading', function() {
                     self._reload();
                 })
-                .on('jcarousel:scroll', function(event, carousel, target, animate) {
+                .on('jcarousel:scroll.jcarouselLazyLoading', function(event, carousel, target, animate) {
                     var isPositionChanged = self._position !== self._instance.list().position()[self._instance.lt];
 
-                    if (!self._scrollPrevented && !isPositionChanged) {
+                    if (!self._scrollPrevented && !isPositionChanged && self._options.preventScroll) {
                         var $nextSlides = self._getNextVisibleSlides(target);
                         var callback = function() {};
                         self._scrollPrevented = true;
@@ -86,10 +87,10 @@
                         event.preventDefault();
                     }
                 })
-                .on('jcarousel:scrollend', function() {
+                .on('jcarousel:scrollend.jcarouselLazyLoading', function() {
                     var isPositionChanged = self._position !== self._instance.list().position()[self._instance.lt];
 
-                    if (isPositionChanged) {
+                    if (isPositionChanged || !self._options.preventScroll) {
                         self._options.waitFunction(self._instance.visible(), function() {});
                     }
                 });
@@ -144,7 +145,7 @@
             }
         },
         _destroy: function() {
-
+            this._element.off('.jcarouselLazyLoading');
         },
         _reload: function() {
             this._options.waitFunction(this._instance.visible(), function(){});
