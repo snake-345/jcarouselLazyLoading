@@ -1,9 +1,10 @@
 .jcarousel-wrapper {
+    background: #fff;
     margin: 20px auto;
     position: relative;
     border: 10px solid #fff;
     width: 600px;
-    height: 400px;
+    height: 100px;
     -webkit-border-radius: 5px;
        -moz-border-radius: 5px;
             border-radius: 5px;
@@ -34,15 +35,6 @@
     overflow: hidden;
 }
 
-.jcarousel img {
-    display: block;
-}
-
-.jcarousel.jcarousel-vertical {
-    width: 600px;
-    height: 400px;
-}
-
 .jcarousel ul {
     width: 20000em;
     position: relative;
@@ -51,13 +43,50 @@
     padding: 0;
 }
 
-.jcarousel.jcarousel-vertical ul {
-    width: 100%;
-    height: 20000em;
-}
-
 .jcarousel li {
     float: left;
+    position: relative;
+    margin-right: 10px;
+}
+
+.jcarousel li:last-child {
+    margin-right: 0px;
+}
+
+.jcarousel li:before {
+    content: 'Loading...';
+    display: block;
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    left: 0;
+    right: 0;
+    font-size: 20px;
+    line-height: 1;
+    margin-top: -0.5em;
+    z-index: 1;
+}
+
+.jcarousel img[data-src],
+.jcarousel img.loading {
+    opacity: 0;
+}
+
+.jcarousel img.non-transition {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+}
+
+.jcarousel img {
+    opacity: 1;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
 }
 
 /** Carousel Controls **/
@@ -65,7 +94,8 @@
 .jcarousel-control-prev,
 .jcarousel-control-next {
     position: absolute;
-    top: 200px;
+    top: 50%;
+    margin-top: -15px;
     width: 30px;
     height: 30px;
     text-align: center;
@@ -107,6 +137,7 @@
     position: absolute;
     bottom: 0;
     left: 15px;
+    z-index: 3;
 }
 
 .jcarousel-pagination a {

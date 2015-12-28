@@ -1,12 +1,16 @@
 (function($) {
     $(function() {
-        $('.jcarousel')
-            .jcarousel({
-                vertical: true,
-                wrap: 'circular'
-            })
+        $('.jcarousel-1')
+            .jcarousel()
             .jcarouselSwipe()
             .jcarouselLazyLoading();
+
+        $('.jcarousel-2')
+            .jcarousel()
+            .jcarouselSwipe()
+            .jcarouselLazyLoading({
+                preventScroll: false
+            });
 
         $('.jcarousel-control-prev')
             .on('jcarouselcontrol:active', function() {
@@ -16,7 +20,7 @@
                 $(this).addClass('inactive');
             })
             .jcarouselControl({
-                target: '-=1'
+                target: '-=4'
             });
 
         $('.jcarousel-control-next')
@@ -27,16 +31,7 @@
                 $(this).addClass('inactive');
             })
             .jcarouselControl({
-                target: '+=1'
+                target: '+=4'
             });
-
-        $('.jcarousel-pagination')
-            .on('jcarouselpagination:active', 'a', function() {
-                $(this).addClass('active');
-            })
-            .on('jcarouselpagination:inactive', 'a', function() {
-                $(this).removeClass('active');
-            })
-            .jcarouselPagination();
     });
 })(jQuery);
