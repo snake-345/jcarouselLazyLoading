@@ -4,26 +4,7 @@
             .jcarousel()
             .jcarouselSwipe()
             .jcarouselLazyLoading({
-                waitFunction: function($slides, callback) {
-                    $slides.imagesLoaded(function() {
-                        // all images loaded
-                        callback();
-                    }).progress(function( instance, loadingImage ) {
-                        // one image loaded
-                        $(loadingImage.img).removeClass('loading');
-                    });
-
-                    // load images
-                    $slides.find('img[data-src]').each(function() {
-                        var $img = $(this);
-                        var src = $img.attr('data-src');
-
-                        $img
-                            .attr('src', src)
-                            .removeAttr('data-src')
-                            .addClass('loading');
-                    });
-                }
+                waitFunction: waitFunction
             });
 
         $('.jcarousel-2')
@@ -31,27 +12,34 @@
             .jcarouselSwipe()
             .jcarouselLazyLoading({
                 preventScroll: false,
-                waitFunction: function($slides, callback) {
-                    $slides.imagesLoaded(function() {
-                        // all images loaded
-                        callback();
-                    }).progress(function( instance, loadingImage ) {
-                        // one image loaded
-                        $(loadingImage.img).removeClass('loading');
-                    });
+                waitFunction: waitFunction
+            });
 
-                    // load images
-                    $slides.find('img[data-src]').each(function() {
-                        var $img = $(this);
-                        var src = $img.attr('data-src');
+        function waitFunction($slides, callback, isScrollPrevented) {
+            $slides.imagesLoaded(function() {
+                // all images loaded
+                callback();
+            }).progress(function( instance, loadingImage ) {
+                // one image loaded
+                $(loadingImage.img).removeClass('loading');
+            });
 
-                        $img
-                            .attr('src', src)
-                            .removeAttr('data-src')
-                            .addClass('loading');
-                    });
+            // load images
+            $slides.find('img[data-src]').each(function() {
+                var $img = $(this);
+                var src = $img.attr('data-src');
+
+                $img
+                    .attr('src', src)
+                    .removeAttr('data-src')
+                    .addClass('loading');
+
+                if (isScrollPrevented) {
+                    // if scroll was prevented then show animation not need
+                    $img.addClass('non-transition');
                 }
             });
+        }
 
         $('.jcarousel-control-prev')
             .on('jcarouselcontrol:active', function() {
