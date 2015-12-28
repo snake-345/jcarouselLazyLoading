@@ -63,7 +63,7 @@ $('.jcarousel-1')
     .jcarousel()
     .jcarouselSwipe()
     .jcarouselLazyLoading({
-        waitFunction: function($slides, callback) {
+        waitFunction: function($slides, callback, isScrollPrevented) {
             $slides.imagesLoaded(function() {
                 // all images loaded
                 callback();
@@ -81,6 +81,11 @@ $('.jcarousel-1')
                     .attr('src', src)
                     .removeAttr('data-src')
                     .addClass('loading');
+
+                if (isScrollPrevented) {
+                    // if scroll was prevented then show animation not need
+                    $img.addClass('non-transition');
+                }
             });
         }
     });
@@ -124,7 +129,7 @@ $('.jcarousel-2')
     .jcarouselSwipe()
     .jcarouselLazyLoading({
         preventScroll: false,
-        waitFunction: function($slides, callback) {
+        waitFunction: function($slides, callback, isScrollPrevented) {
             $slides.imagesLoaded(function() {
                 // all images loaded
                 callback();
@@ -142,6 +147,11 @@ $('.jcarousel-2')
                     .attr('src', src)
                     .removeAttr('data-src')
                     .addClass('loading');
+
+                if (isScrollPrevented) {
+                    // if scroll was prevented then show animation not need
+                    $img.addClass('non-transition');
+                }
             });
         }
     });
