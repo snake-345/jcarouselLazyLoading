@@ -1,12 +1,16 @@
 (function($) {
     $(function() {
         $('.jcarousel-1')
-            .jcarousel()
+            .jcarousel({
+                wrap: 'circular'
+            })
             .jcarouselSwipe()
             .jcarouselLazyLoading();
 
         $('.jcarousel-2')
-            .jcarousel()
+            .jcarousel({
+                wrap: 'circular'
+            })
             .jcarouselSwipe()
             .jcarouselLazyLoading({
                 preventScroll: false
@@ -20,7 +24,7 @@
                 $(this).addClass('inactive');
             })
             .jcarouselControl({
-                target: '-=1'
+                target: '-=3'
             });
 
         $('.jcarousel-control-next')
@@ -31,16 +35,7 @@
                 $(this).addClass('inactive');
             })
             .jcarouselControl({
-                target: '+=1'
+                target: '+=3'
             });
-
-        $('.jcarousel-pagination')
-            .on('jcarouselpagination:active', 'a', function() {
-                $(this).addClass('active');
-            })
-            .on('jcarouselpagination:inactive', 'a', function() {
-                $(this).removeClass('active');
-            })
-            .jcarouselPagination();
     });
 })(jQuery);

@@ -26,14 +26,14 @@
             <p>This example shows how to setup a basic carousel with prev/next controls, pagination, swipe support and <strong>lazy loading.</strong></p>
 
             <div class="jcarousel-wrapper">
-                <div class="jcarousel">
+                <div class="jcarousel jcarousel-1">
                     <ul>
-                        <li><img data-src="http://fakeimg.pl/600x400/ccc/?text=1" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
-                        <li><img data-src="http://fakeimg.pl/600x400/bbb/?text=2" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
-                        <li><img data-src="http://fakeimg.pl/600x400/aaa/?text=3" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
-                        <li><img data-src="http://fakeimg.pl/600x400/999/?text=4" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
-                        <li><img data-src="http://fakeimg.pl/600x400/888/?text=5" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
-                        <li><img data-src="http://fakeimg.pl/600x400/777/?text=6" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/600x400/ccc/?text=1 - 1" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/600x400/bbb/?text=1 - 2" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/600x400/aaa/?text=1 - 3" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/600x400/999/?text=1 - 4" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/600x400/888/?text=1 - 5" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/600x400/777/?text=1 - 6" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
                     </ul>
                 </div>
 
@@ -44,6 +44,41 @@
 
                 </p>
             </div>
+            <div class="title">Init:</div>
+<pre>
+$('.jcarousel-1')
+    .jcarousel()
+    .jcarouselSwipe()
+    .jcarouselLazyLoading();
+</pre>
+            <div class="jcarousel-wrapper">
+            <div class="jcarousel jcarousel-2">
+                <ul>
+                    <li><img data-src="http://fakeimg.pl/600x400/ccc/?text=2 - 1" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
+                    <li><img data-src="http://fakeimg.pl/600x400/bbb/?text=2 - 2" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
+                    <li><img data-src="http://fakeimg.pl/600x400/aaa/?text=2 - 3" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
+                    <li><img data-src="http://fakeimg.pl/600x400/999/?text=2 - 4" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
+                    <li><img data-src="http://fakeimg.pl/600x400/888/?text=2 - 5" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
+                    <li><img data-src="http://fakeimg.pl/600x400/777/?text=2 - 6" class="jcarousel-lazy-image" width="600" height="400" alt=""></li>
+                </ul>
+            </div>
+
+            <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+            <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+
+            <p class="jcarousel-pagination">
+
+            </p>
+        </div>
+            <div class="title">Init:</div>
+<pre>
+$('.jcarousel-2')
+    .jcarousel()
+    .jcarouselSwipe()
+    .jcarouselLazyLoading({
+        preventScroll: false
+    });
+</pre>
         </div>
 
     </body>

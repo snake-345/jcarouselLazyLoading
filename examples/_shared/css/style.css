@@ -10,10 +10,10 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Arvo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  text-align: center;
-  font-weight: normal;
-  text-rendering: optimizelegibility;
+    font-family: 'Arvo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-align: center;
+    font-weight: normal;
+    text-rendering: optimizelegibility;
 }
 
 h1 {
@@ -23,27 +23,35 @@ h1 {
 }
 
 h2, h2 a {
-    color: #F14E32;
+    color: #4E443C;
 }
 
 h3, h3 a {
-  color: #0388A6;
+    color: #0388A6;
 }
 
 a {
-  color: #0388A6;
+    color: #0388A6;
 }
 
 pre {
-  border:1px solid #000;
-  overflow-x:auto;
-  background: #222;
-  color: #fff;
-  text-shadow: none;
+    border:1px solid #000;
+    overflow-x:auto;
+    background: #222;
+    color: #fff;
+    text-shadow: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 60px;
 }
 
 .wrapper {
     max-width: 620px;
     padding: 0 20px 40px 20px;
     margin: auto;
+}
+
+.title {
+    font-size: 18px;
 }

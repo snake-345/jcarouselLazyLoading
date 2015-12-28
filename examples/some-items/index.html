@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Carousel with some items - jCarousel Examples</title>
+
+        <!-- Shared assets -->
+        <link rel="stylesheet" type="text/css" href="../_shared/css/style.css">
+
+        <!-- Example assets -->
+        <link rel="stylesheet" type="text/css" href="jcarousel.some-items.css">
+
+        <script type="text/javascript" src="../../bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="../../bower_components/jcarousel/dist/jquery.jcarousel.js"></script>
+        <script type="text/javascript" src="../../bower_components/jcarousel-swipe/dist/jquery.jcarousel-swipe.js"></script>
+        <script type="text/javascript" src="../../dist/jquery.jcarousel-lazyloading.js"></script>
+
+        <script type="text/javascript" src="jcarousel.some-items.js"></script>
+
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <h1>Carousel with some items</h1>
+
+            <p>This example shows how to setup a carousel with some items with prev/next controls, swipe support and <strong>lazy loading.</strong></p>
+
+            <div class="jcarousel-wrapper">
+                <div class="jcarousel jcarousel-1">
+                    <ul>
+                        <li><img data-src="http://fakeimg.pl/193x100/ccc/?text=1 - 1" class="jcarousel-lazy-image" width="193" height="100" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/193x100/bbb/?text=1 - 2" class="jcarousel-lazy-image" width="193" height="100" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/193x100/aaa/?text=1 - 3" class="jcarousel-lazy-image" width="193" height="100" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/193x100/999/?text=1 - 4" class="jcarousel-lazy-image" width="193" height="100" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/193x100/888/?text=1 - 5" class="jcarousel-lazy-image" width="193" height="100" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/193x100/777/?text=1 - 6" class="jcarousel-lazy-image" width="193" height="100" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/193x100/666/?text=1 - 7" class="jcarousel-lazy-image" width="193" height="100" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/193x100/555/?text=1 - 8" class="jcarousel-lazy-image" width="193" height="100" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/193x100/444/?text=1 - 9" class="jcarousel-lazy-image" width="193" height="100" alt=""></li>
+                    </ul>
+                </div>
+
+                <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+                <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+
+                <p class="jcarousel-pagination">
+
+                </p>
+            </div>
+            <div class="title">Init:</div>
+<pre>
+$('.jcarousel-1')
+    .jcarousel({
+        wrap: 'circular'
+    })
+    .jcarouselSwipe()
+    .jcarouselLazyLoading();
+</pre>
+            <div class="jcarousel-wrapper">
+                <div class="jcarousel jcarousel-2">
+                    <ul>
+                        <li><img data-src="http://fakeimg.pl/193x100/ccc/?text=2 - 1" class="jcarousel-lazy-image" width="193" height="100" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/193x100/bbb/?text=2 - 2" class="jcarousel-lazy-image" width="193" height="100" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/193x100/aaa/?text=2 - 3" class="jcarousel-lazy-image" width="193" height="100" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/193x100/999/?text=2 - 4" class="jcarousel-lazy-image" width="193" height="100" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/193x100/888/?text=2 - 5" class="jcarousel-lazy-image" width="193" height="100" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/193x100/777/?text=2 - 6" class="jcarousel-lazy-image" width="193" height="100" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/193x100/666/?text=2 - 7" class="jcarousel-lazy-image" width="193" height="100" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/193x100/555/?text=2 - 8" class="jcarousel-lazy-image" width="193" height="100" alt=""></li>
+                        <li><img data-src="http://fakeimg.pl/193x100/444/?text=2 - 9" class="jcarousel-lazy-image" width="193" height="100" alt=""></li>
+                    </ul>
+                </div>
+
+                <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+                <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+
+                <p class="jcarousel-pagination">
+
+                </p>
+            </div>
+
+            <div class="title">Init:</div>
+<pre>
+$('.jcarousel-2')
+    .jcarousel({
+        wrap: 'circular'
+    })
+    .jcarouselSwipe()
+    .jcarouselLazyLoading({
+        preventScroll: false
+    });
+</pre>
+        </div>
+
+    </body>
+</html>
