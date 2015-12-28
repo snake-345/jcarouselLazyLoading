@@ -32,9 +32,11 @@
     $.jCarousel.plugin('jcarouselLazyLoading', {
         _options: {
             preventScroll: true,
-            // isScrollPrevented: true если переключение слайда было отменено
-            // можно использовать для убирания анимации, или для того чтобы показывать какой либо прелоадер
             waitFunction: function($slides, callback, isScrollPrevented) {
+                // $slides: contains slides which will be visible after scroll
+                // callback: contains function which you should call when all content in $slides loaded
+                // isScrollPrevented: boolean parameter. If true then method scroll was canceled
+                // and waiting when callback function will be called. For example you may use it for cancel "show content" animation.
                 var i = 0;
                 var $lazyImages = $slides.find('img[data-src]');
 
@@ -88,7 +90,6 @@
                             self._instance.scroll(target, animate, function() {
                                 callback();
                                 self._scrollPrevented = false;
-                                self._position = self._instance.list().position()[self._instance.lt];
                             });
                         }, true);
                         event.preventDefault();
@@ -100,6 +101,9 @@
                     if (isPositionChanged || !self._options.preventScroll) {
                         self._options.waitFunction(self._instance.visible(), function() {});
                     }
+                })
+                .on('jcarousel:animateend.jcarouselLazyLoading', function() {
+                    self._position = self._instance.list().position()[self._instance.lt];
                 });
         },
         _create: function() {
