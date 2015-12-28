@@ -15,6 +15,7 @@
   "dependencies": {
     "jquery": ">=1.7",
     "jcarousel": ">=0.3.4",
-    "jcarousel-swipe": ">=0.1.1"
+    "jcarousel-swipe": ">=0.1.1",
+    "imagesloaded": "*"
   }
 }
