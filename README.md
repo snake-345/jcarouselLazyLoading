@@ -79,4 +79,4 @@ That's all =)
 }
 ```
 In waitFunction you may waiting any content.  
-Also you may use any third-party plugin for waiting images loading in waitFunction(for example imagesLoaded https://github.com/desandro/imagesloaded)
+Also you may use any third-party plugin for waiting content loading in waitFunction(for example imagesLoaded https://github.com/desandro/imagesloaded)
