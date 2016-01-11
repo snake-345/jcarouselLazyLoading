@@ -1,16 +1,17 @@
 # jcarouselLazyLoading plugin
-Adds lazy loading to jcarousel.  
-The plugin prevented scroll until content in next slides loadings and then scroll will be called.  
-But if next slides partially visible(for example: when a user uses swipe gestures) then scroll not prevents.
+Adds lazy loading to jcarousel. 
+
+The plugin halts slide scrolling until the next slide is loaded. Scrolling will happen once the next slide is ready.
+But if the next slide is at least partially visible (e.g. when swipe gestures are used), the scrolling will not be postponed.
 
 ## Features
 * configurable
-* opportunity waiting loading any content(video, ajax, images)
+* works with any content (video, ajax, images)
 * easy to use
 
 ## Requirments
 * jQuery
-* jquery.jcarousel-core.js(minimum) also you may use bundle version: jquery.jcarousel.js
+* jquery.jcarousel-core.js (minimum), you also may use the bundle version: jquery.jcarousel.js
 
 ## How to use
 To use the plugin include jquery, jcarousel and jcarouselLazyLoading source files into your HTML document:
@@ -19,9 +20,9 @@ To use the plugin include jquery, jcarousel and jcarouselLazyLoading source file
 <script type="text/javascript" src="js/jquery.jcarousel.min.js"></script>
 <script type="text/javascript" src="js/jquery.jcarousel-lazyloading.min.js"></script>
 ```
-By default plugin works with images with data-src attribute.  
-Also before loading images jcarousel can't get correct slide width and it will broken.  
-Therefore you should previously set width for all slides or set width and height attributes for lazy images.
+By default plugin works with images and data-src attribute.  
+Also, until images are loaded jcarousel won't get correct slide width.  
+Therefore you should set the width for all slides or set width and height attributes for lazy images.
 ``` HTML
 <div class="jcarousel">
     <ul>
@@ -48,7 +49,7 @@ That's all =)
     preventScroll: true, // default: true. If set false then jcarousel scroll will not be prevents
     waitFunction: function($slides, callback, isScrollPrevented) { // default: function that is written below
         // $slides: contains slides which will be visible after scroll
-        // callback: contains function which you should call when all content in $slides loaded
+        // callback: contains function which you should call when all content in $slides is loaded
         // isScrollPrevented: boolean parameter. If true then method scroll was canceled
         // and waiting when callback function will be called. For example you may use it for cancel "show content" animation.
         var i = 0;
@@ -78,5 +79,5 @@ That's all =)
     }
 }
 ```
-In waitFunction you may waiting any content.  
-Also you may use any third-party plugin for waiting content loading in waitFunction(for example imagesLoaded https://github.com/desandro/imagesloaded)
+You can use waitFunction to wait for any content.  
+Also you may use any third-party plugin for content loading in waitFunction(e.g. imagesLoaded https://github.com/desandro/imagesloaded)
