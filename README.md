@@ -81,3 +81,6 @@ That's all =)
 ```
 You can use waitFunction to wait for any content.  
 Also you may use any third-party plugin for content loading in waitFunction(e.g. imagesLoaded https://github.com/desandro/imagesloaded)
+
+##License
+Copyright (c) 2016 Evgeniy Pelmenev. Released under the MIT license.
