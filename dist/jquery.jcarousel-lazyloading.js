@@ -63,6 +63,7 @@
                 }
             }
         },
+        _loading: false,
         _scrollPrevented: false,
         _position: 0,
         _init: function() {
@@ -76,10 +77,10 @@
                 .on('jcarousel:scroll.jcarouselLazyLoading', function(event, carousel, target, animate) {
                     var isPositionChanged = self._position !== self._instance.list().position()[self._instance.lt];
 
-                    if (!self._scrollPrevented && !isPositionChanged && self._options.preventScroll) {
+                    if (!self._loading && !isPositionChanged && self._options.preventScroll) {
                         var $nextSlides = self._getNextVisibleSlides(target);
                         var callback = function() {};
-                        self._scrollPrevented = true;
+                        self._scrollPrevented = self._loading = true;
 
                         if ($.isFunction(animate)) { // if scroll was called like .scroll(target, callback)
                             callback = animate;
@@ -87,11 +88,16 @@
                         }
 
                         self._options.waitFunction($nextSlides, function() {
+                            self._scrollPrevented = false;
                             self._instance.scroll(target, animate, function() {
                                 callback();
-                                self._scrollPrevented = false;
+                                self._loading = false;
                             });
                         }, true);
+                        event.preventDefault();
+                    }
+
+                    if (self._scrollPrevented) {
                         event.preventDefault();
                     }
                 })
