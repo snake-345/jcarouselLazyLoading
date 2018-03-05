@@ -38,14 +38,33 @@
                 // isScrollPrevented: boolean parameter. If true then method scroll was canceled
                 // and waiting when callback function will be called. For example you may use it for cancel "show content" animation.
                 var i = 0;
-                var $lazyImages = $slides.find('img[data-src]');
+                var $lazyImages = $slides.find('' +
+                    'img[data-src],' +
+                    'img[data-srcset],' +
+                    'source[data-srcset],' +
+                    'source[data-sizes]');
 
                 $lazyImages.toggleClass('non-transition', !!isScrollPrevented);
                 $lazyImages.each(function() {
                     var $img = $(this);
                     var src = $img.attr('data-src');
+                    var srcset = $img.attr('data-srcset');
+                    var sizes = $img.attr('data-sizes');
                     $img.addClass('loading');
-                    $img.attr('src', src).removeAttr('data-src');
+                    $img
+                        .attr('src', src)
+                        .attr('srcset', srcset)
+                        .attr('sizes', sizes)
+                        .removeAttr('data-src')
+                        .removeAttr('data-srcset')
+                        .removeAttr('data-sizes');
+                    // reevaluate <picture> if picturefill used for support <picture> in old browsers
+                    if (typeof window.picturefill === 'function' && $img.is('img')) {
+                        picturefill({
+                            reevaluate: true,
+                            elements: [$img[0]]
+                        });
+                    }
                 });
                 wait();
 

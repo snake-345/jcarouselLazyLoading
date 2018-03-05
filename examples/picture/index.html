@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Basic carousel - jCarousel Examples</title>
+
+        <!-- Shared assets -->
+        <link rel="stylesheet" type="text/css" href="../_shared/css/style.css">
+
+        <!-- Example assets -->
+        <link rel="stylesheet" type="text/css" href="jcarousel.picture.css">
+        <script type="text/javascript" src="../../bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="../../bower_components/jcarousel/dist/jquery.jcarousel.js"></script>
+        <script type="text/javascript" src="../../bower_components/jcarousel-swipe/dist/jquery.jcarousel-swipe.js"></script>
+        <script type="text/javascript" src="../../dist/jquery.jcarousel-lazyloading.js"></script>
+
+        <script type="text/javascript" src="jcarousel.picture.js"></script>
+
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <h1>Carousel with adaptive images</h1>
+
+            <p>This example shows how to setup a carousel with <strong>&lt;picture&gt;</strong> element and <strong>lazy loading.</strong></p>
+
+            <h2>Images with srcset and sizes</h2>
+            <div class="jcarousel-wrapper">
+                <div class="jcarousel jcarousel-1">
+                    <ul>
+                        <li>
+                            <img
+                                data-srcset="
+                                    http://fakeimg.pl/600x400/ccc/?text=1%20-%201%20600w 600w,
+                                    http://fakeimg.pl/600x400/ccc/?text=1%20-%201%20400w 400w"
+                                data-sizes="400px"
+                                width="600"
+                                height="400"
+                                alt="">
+                        </li>
+                        <li>
+                            <img
+                                data-srcset="
+                                    http://fakeimg.pl/600x400/bbb/?text=1%20-%202%20600w 600w,
+                                    http://fakeimg.pl/600x400/bbb/?text=1%20-%202%20400w 400w"
+                                data-sizes="600px"
+                                width="600"
+                                height="400"
+                                alt="">
+                        </li>
+                        <li>
+                            <img
+                                data-srcset="
+                                    http://fakeimg.pl/600x400/aaa/?text=1%20-%203%20600w 600w,
+                                    http://fakeimg.pl/600x400/aaa/?text=1%20-%203%20400w 400w"
+                                data-sizes="400px"
+                                width="600"
+                                height="400"
+                                alt="">
+                        </li>
+                        <li>
+                            <img
+                                data-srcset="
+                                    http://fakeimg.pl/600x400/999/?text=1%20-%204%20600w 600w,
+                                    http://fakeimg.pl/600x400/999/?text=1%20-%204%20400w 400w"
+                                data-sizes="400px"
+                                width="600"
+                                height="400"
+                                alt="">
+                        </li>
+                        <li>
+                            <img
+                                data-srcset="
+                                    http://fakeimg.pl/600x400/888/?text=1%20-%205%20600w 600w,
+                                    http://fakeimg.pl/600x400/888/?text=1%20-%205%20400w 400w"
+                                data-sizes="400px"
+                                width="600"
+                                height="400"
+                                alt="">
+                        </li>
+                        <li>
+                            <img
+                                data-srcset="
+                                    http://fakeimg.pl/600x400/777/?text=1%20-%206%20600w 600w,
+                                    http://fakeimg.pl/600x400/777/?text=1%20-%206%20400w 400w"
+                                data-sizes="400px"
+                                width="600"
+                                height="400"
+                                alt="">
+                        </li>
+                    </ul>
+                </div>
+
+                <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+                <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+
+                <p class="jcarousel-pagination">
+
+                </p>
+            </div>
+            <div class="title">Init:</div>
+<pre>
+$('.jcarousel-1')
+    .jcarousel()
+    .jcarouselSwipe()
+    .jcarouselLazyLoading();
+</pre>
+            <h2>Picture elements</h2>
+            <div class="jcarousel-wrapper">
+                <div class="jcarousel jcarousel-2">
+                    <ul>
+                        <li>
+                            <picture>
+                                <source
+                                        data-srcset="
+                                            http://fakeimg.pl/600x400/ccc/?text=2%20-%201%20600w 600w,
+                                            http://fakeimg.pl/600x400/ccc/?text=2%20-%201%20400w 400w"
+                                        data-sizes="600px" media="(min-width: 1000px)">
+                                <source
+                                        data-srcset="
+                                            http://fakeimg.pl/600x400/ccc/?text=2%20-%201%20400w 400w"
+                                        data-sizes="400px">
+                                <img data-src="http://fakeimg.pl/600x400/ccc/?text=2%20-%201%20initial" alt="" width="600" height="400">
+                            </picture>
+                        </li>
+                        <li>
+                            <picture>
+                                <source
+                                        data-srcset="
+                                            http://fakeimg.pl/600x400/ccc/?text=2%20-%202%20600w 600w,
+                                            http://fakeimg.pl/600x400/ccc/?text=2%20-%202%20400w 400w"
+                                        data-sizes="600px" media="(min-width: 1000px)">
+                                <source
+                                        data-srcset="
+                                            http://fakeimg.pl/600x400/ccc/?text=2%20-%202%20400w 400w"
+                                        data-sizes="400px">
+                                <img data-src="http://fakeimg.pl/600x400/ccc/?text=2%20-%202%20initial" alt="" width="600" height="400">
+                            </picture>
+                        </li>
+                        <li>
+                            <picture>
+                                <source
+                                        data-srcset="
+                                            http://fakeimg.pl/600x400/ccc/?text=2%20-%203%20600w 600w,
+                                            http://fakeimg.pl/600x400/ccc/?text=2%20-%203%20400w 400w"
+                                        data-sizes="600px" media="(min-width: 1000px)">
+                                <source
+                                        data-srcset="
+                                            http://fakeimg.pl/600x400/ccc/?text=2%20-%203%20400w 400w"
+                                        data-sizes="400px">
+                                <img data-src="http://fakeimg.pl/600x400/ccc/?text=2%20-%203%20initial" alt="" width="600" height="400">
+                            </picture>
+                        </li>
+                        <li>
+                            <picture>
+                                <source
+                                        data-srcset="
+                                            http://fakeimg.pl/600x400/ccc/?text=2%20-%204%20600w 600w,
+                                            http://fakeimg.pl/600x400/ccc/?text=2%20-%204%20400w 400w"
+                                        data-sizes="600px" media="(min-width: 1000px)">
+                                <source
+                                        data-srcset="
+                                            http://fakeimg.pl/600x400/ccc/?text=2%20-%204%20400w 400w"
+                                        data-sizes="400px">
+                                <img data-src="http://fakeimg.pl/600x400/ccc/?text=2%20-%204%20initial" alt="" width="600" height="400">
+                            </picture>
+                        </li>
+                        <li>
+                            <picture>
+                                <source
+                                        data-srcset="
+                                            http://fakeimg.pl/600x400/ccc/?text=2%20-%205%20600w 600w,
+                                            http://fakeimg.pl/600x400/ccc/?text=2%20-%205%20400w 400w"
+                                        data-sizes="600px" media="(min-width: 1000px)">
+                                <source
+                                        data-srcset="
+                                            http://fakeimg.pl/600x400/ccc/?text=2%20-%205%20400w 400w"
+                                        data-sizes="400px">
+                                <img data-src="http://fakeimg.pl/600x400/ccc/?text=2%20-%205%20initial" alt="" width="600" height="400">
+                            </picture>
+                        </li>
+                        <li>
+                            <picture>
+                                <source
+                                        data-srcset="
+                                            http://fakeimg.pl/600x400/ccc/?text=2%20-%206%20600w 600w,
+                                            http://fakeimg.pl/600x400/ccc/?text=2%20-%206%20400w 400w"
+                                        data-sizes="600px" media="(min-width: 1000px)">
+                                <source
+                                        data-srcset="
+                                            http://fakeimg.pl/600x400/ccc/?text=2%20-%206%20400w 400w"
+                                        data-sizes="400px">
+                                <img data-src="http://fakeimg.pl/600x400/ccc/?text=2%20-%206%20initial" alt="" width="600" height="400">
+                            </picture>
+                        </li>
+                    </ul>
+                </div>
+
+                <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+                <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+
+            </div>
+            <div class="title">Init:</div>
+<pre>
+$('.jcarousel-2')
+    .jcarousel()
+    .jcarouselSwipe()
+    .jcarouselLazyLoading();
+</pre>
+        </div>
+
+    </body>
+</html>

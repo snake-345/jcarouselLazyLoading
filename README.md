@@ -6,7 +6,7 @@ But if the next slide is at least partially visible (e.g. when swipe gestures ar
 
 ## Features
 * configurable
-* works with any content (video, ajax, images)
+* works with any content (video, ajax, images, picture)
 * easy to use
 
 ## Requirments
@@ -20,7 +20,7 @@ To use the plugin include jquery, jcarousel and jcarouselLazyLoading source file
 <script type="text/javascript" src="js/jquery.jcarousel.min.js"></script>
 <script type="text/javascript" src="js/jquery.jcarousel-lazyloading.min.js"></script>
 ```
-By default plugin works with images and data-src attribute.  
+By default plugin works with images and data-src attribute. Or if you use srcset or picture tag you should use data-srcset and data-sizes attributes. You can see "Picture" example. 
 Also, until images are loaded jcarousel won't get correct slide width.  
 Therefore you should set the width for all slides or set width and height attributes for lazy images.
 ``` HTML

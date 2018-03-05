@@ -1,7 +1,7 @@
 {
-  "name": "jcarouselSwipe",
-  "version": "0.1.0",
-  "description": "Adds comfortable swipe gestures to jcarousel",
+  "name": "jcarouselLazyLoading",
+  "version": "0.1.2",
+  "description": "Adds lazy loading to jcarousel",
   "author": "Evgeniy Pelmenev <g.snake345@gmail.com>",
   "license": "MIT",
   "devDependencies": {
