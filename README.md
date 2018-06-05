@@ -1,5 +1,5 @@
 # jcarouselLazyLoading plugin
-Adds lazy loading to jcarousel. 
+Adds lazy loading to jcarousel.
 
 The plugin halts slide scrolling until the next slide is loaded. Scrolling will happen once the next slide is ready.
 But if the next slide is at least partially visible (e.g. when swipe gestures are used), the scrolling will not be postponed.
@@ -20,8 +20,8 @@ To use the plugin include jquery, jcarousel and jcarouselLazyLoading source file
 <script type="text/javascript" src="js/jquery.jcarousel.min.js"></script>
 <script type="text/javascript" src="js/jquery.jcarousel-lazyloading.min.js"></script>
 ```
-By default plugin works with images and data-src attribute. Or if you use srcset or picture tag you should use data-srcset and data-sizes attributes. You can see "Picture" example. 
-Also, until images are loaded jcarousel won't get correct slide width.  
+By default plugin works with images and data-src attribute. Or if you use srcset or picture tag you should use data-srcset and data-sizes attributes. You can see "Picture" example.
+Also, until images are loaded jcarousel won't get correct slide width.
 Therefore you should set the width for all slides or set width and height attributes for lazy images.
 ``` HTML
 <div class="jcarousel">
@@ -47,6 +47,7 @@ That's all =)
 ``` javascript
 {
     preventScroll: true, // default: true. If set false then jcarousel scroll will not be prevents
+    preloader: null, // default: null. selector of preloader inside slides
     waitFunction: function($slides, callback, isScrollPrevented) { // default: function that is written below
         // $slides: contains slides which will be visible after scroll
         // callback: contains function which you should call when all content in $slides is loaded
@@ -79,7 +80,7 @@ That's all =)
     }
 }
 ```
-You can use waitFunction to wait for any content.  
+You can use waitFunction to wait for any content.
 Also you may use any third-party plugin for content loading in waitFunction(e.g. imagesLoaded https://github.com/desandro/imagesloaded)
 
 ##License

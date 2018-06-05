@@ -32,6 +32,7 @@
     $.jCarousel.plugin('jcarouselLazyLoading', {
         _options: {
             preventScroll: true,
+            preloader: null,
             waitFunction: function($slides, callback, isScrollPrevented) {
                 // $slides: contains slides which will be visible after scroll
                 // callback: contains function which you should call when all content in $slides loaded
@@ -112,6 +113,7 @@
                                 callback();
                                 self._loading = false;
                             });
+                            self._removePreloaders($nextSlides);
                         }, true);
                         event.preventDefault();
                     }
@@ -122,10 +124,13 @@
                 })
                 .on('jcarousel:scrollend.jcarouselLazyLoading', function() {
                     var isPositionChanged = self._position !== self._instance.list().position()[self._instance.lt];
+                    var $visible = self._instance.visible();
 
-                    if (isPositionChanged || !self._options.preventScroll) {
-                        self._options.waitFunction(self._instance.visible(), function() {});
-                    }
+					if (isPositionChanged || !self._options.preventScroll) {
+						self._options.waitFunction($visible, function() {
+							self._removePreloaders($visible);
+						});
+					}
                 })
                 .on('jcarousel:animateend.jcarouselLazyLoading', function() {
                     self._position = self._instance.list().position()[self._instance.lt];
@@ -180,12 +185,28 @@
                     parsedTarget.target;
             }
         },
+		_removePreloaders: function($slides) {
+			if (!this._options.preloader) {
+				return;
+			}
+
+			var $preloader = $slides.find(this._options.preloader);
+
+			if ($preloader.length) {
+				$preloader.detach();
+			}
+		},
         _destroy: function() {
             this._element.off('.jcarouselLazyLoading');
         },
-        _reload: function() {
-            this._options.waitFunction(this._instance.visible(), function(){});
-            this._position = this._instance.list().position()[this._instance.lt];
+		_reload: function() {
+			var self = this;
+			var $visible = self._instance.visible();
+
+			this._options.waitFunction($visible, function() {
+				self._removePreloaders($visible);
+			});
+			this._position = this._instance.list().position()[this._instance.lt];
         }
     });
 }(jQuery));
